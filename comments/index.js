@@ -1,11 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const { randomBytes } = require("crypto");
+const cors = require("cors");
 
 const app = express();
 
 app.use(bodyParser());
-
+app.use(cors({
+  origin: "http://localhost:3000"
+}));
 const commentsByPostId = {};
 
 app.get("/posts/:id/comments", (req, res) => {
