@@ -8,7 +8,7 @@ const CommentCreate = ({ postId }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post(`http://localhost:4001/posts/${postId}/comments`, {
-      contet: comment,
+      content: comment,
     });
 
     setComment("");
@@ -21,7 +21,7 @@ const CommentCreate = ({ postId }) => {
           <input
             value={comment}
             name="comment"
-            onChange={(e) => setComment(e.target.data)}
+            onChange={(e) => setComment(e.target.value)}
           />
         </div>
         <button className="btn btn-primary">Submit</button>
