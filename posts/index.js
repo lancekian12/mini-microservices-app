@@ -6,16 +6,17 @@ const cors = require("cors");
 const app = express();
 const posts = {};
 
-app.use(bodyParser.json());
-
-app.get("/posts", (req, res) => {
-  res.send(posts);
-});
 app.use(
   cors({
     origin: "http://localhost:3000",
   }),
 );
+app.use(bodyParser.json());
+
+app.get("/posts", (req, res) => {
+  res.send(posts);
+});
+
 
 app.post("/posts", (req, res) => {
   const id = randomBytes(4).toString("hex");

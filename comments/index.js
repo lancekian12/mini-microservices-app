@@ -5,10 +5,11 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(bodyParser());
 app.use(cors({
   origin: "http://localhost:3000"
 }));
+app.use(bodyParser());
+
 const commentsByPostId = {};
 
 app.get("/posts/:id/comments", (req, res) => {
