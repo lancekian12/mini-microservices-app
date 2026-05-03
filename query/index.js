@@ -2,25 +2,27 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-const post = {};
-
 const app = express();
 
 app.use(bodyParser());
 app.use(cors());
 
-app.get("/posts", (req, res) => {});
+const posts = {};
+
+app.get("/posts", (req, res) => {
+  res.send(posts);
+});
 
 app.post("/events", (req, res) => {
   const { type, data } = req.body;
   if (type === "PostCreated") {
     const { id, title } = data;
 
-    post[id] = { id, title, comments: [] };
+    posts[id] = { id, title, comments: [] };
   }
   if (type === "CommentCreated") {
     const { id, content, postId } = data;
-    const post = post[postId];
+    const post = posts[postId];
     post.comments.push({ id, content });
   }
 });
