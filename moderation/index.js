@@ -22,12 +22,14 @@ app.post("/events", async (req, res) => {
       })
       .catch((err) => {
         console.log(err.message);
-      });
+      }); 
   }
 
   res.send({});
 });
 
-app.listen("4003", () => {
+app.listen("4003", async () => {
   console.log("Listening to 4003");
+
+
 });
